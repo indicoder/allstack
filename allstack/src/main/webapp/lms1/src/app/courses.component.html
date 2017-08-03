@@ -1,0 +1,21 @@
+<h3>All Courses</h3>
+<ul class="course-div">
+  <li *ngFor="let course of courses">
+    <div class="course">
+      <span>{{course.courseName}}</span>
+      <span>({{course.extCourseId}})</span>
+    </div>
+    <div class="course-section-div">
+      <ul>
+        <li class="course-section" *ngFor="let courseSection of course.courseSections">
+          <a class="link-danger" href="">delete</a>
+          <a class="course-section-link" href="">{{courseSection.sectionName}}</a>
+          <input type="text" value="1" maxlength="3" size="3">
+        </li>
+        <li class="course-section">
+          <a class="course-section-link" href="">+ Add Course Section</a>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>

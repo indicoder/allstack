@@ -1,0 +1,14 @@
+<div *ngIf="courseSection">
+  <h4>Add/Edit Course Section for <{{courseSection.extSectionId}}></h4>
+  <div>
+    <label>Course Section Name (sectionName)</label><br>
+    <input [(ngModel)]="courseSection.sectionName" placeholder="Course Name" />
+  </div><br>
+  <div>
+    <label>Course Section Code (extSectionId)</label><br>
+    <input [(ngModel)]="courseSection.extSectionId" placeholder="Section Code" />
+  </div>
+  <br><br>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>
