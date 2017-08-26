@@ -1,0 +1,13 @@
+===========================
+Account
+EC2 - intense80.ca@gmail.com
+===========================
+AWS instance
+scp -i ~/W/workspace/allstack/infra/i80.pem /Users/manas/W/workspace/allstack/allstack/target/allstack-web-0.1-SNAPSHOT.jar ec2-user@34.231.142.249:~/.
+ssh -i ~/W/workspace/allstack/infra/i80.pem ec2-user@34.231.142.249
+===========================
+Deployment install
+https://docs.spring.io/spring-boot/docs/current/reference/html/deployment-install.html
+===========================
+Installation for ng-bootstrap
+https://github.com/valor-software/ngx-bootstrap/blob/development/docs/getting-started/ng-cli.md

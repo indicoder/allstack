@@ -16,11 +16,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name = "coursesections", uniqueConstraints = {
+@Table(name = "CourseSections", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "extSectionId") })
 public class CourseSection {
 	private int courseSectionId; 
@@ -28,7 +29,7 @@ public class CourseSection {
 	private Course course;
 	private String extSectionId;
 	private List<LessonPage> lessonPages = new ArrayList<LessonPage>();
-	//private ArrayList<QuizCollection> quizCollection = new ArrayList<QuizCollection>();
+	private List<QuizCollection> quizCollection = new ArrayList<QuizCollection>();
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -45,19 +46,8 @@ public class CourseSection {
 	public void setSectionName(String sectionName) {
 		this.sectionName = sectionName;
 	}
-	/*public ArrayList<LessonPage> getLessonPages() {
-		return lessonPages;
-	}
-	public void setLessonPages(ArrayList<LessonPage> lessonPages) {
-		this.lessonPages = lessonPages;
-	}
-	public ArrayList<QuizCollection> getQuizCollection() {
-		return quizCollection;
-	}
-	public void setQuizCollection(ArrayList<QuizCollection> quizCollection) {
-		this.quizCollection = quizCollection;
-	}*/
-	@JsonBackReference
+	//@JsonBackReference
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="courseId")
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="courseId")
 	public Course getCourse() {
@@ -80,5 +70,13 @@ public class CourseSection {
 	}
 	public void setLessonPages(List<LessonPage> lessonPages) {
 		this.lessonPages = lessonPages;
+	}
+	@JsonManagedReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "section")
+	public List<QuizCollection> getQuizCollection() {
+		return quizCollection;
+	}
+	public void setQuizCollection(List<QuizCollection> quizCollection) {
+		this.quizCollection = quizCollection;
 	}
 }

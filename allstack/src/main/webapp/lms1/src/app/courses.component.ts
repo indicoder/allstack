@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal'
 
 import { Course }                from './domain/course';
 import { CourseService }         from './course.service';

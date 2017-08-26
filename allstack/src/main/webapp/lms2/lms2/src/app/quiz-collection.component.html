@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="back-to-prev"><a href="courses"><&nbsp;&nbsp;Back to Courses</a></div>
+  <div *ngIf="courseSection" class="course-section">
+    <h4>Add/Edit Course Section for <{{courseSection.course.extCourseId}}></h4>
+    <div>
+      <label>Course Section Name (sectionName)</label><br>
+      <input [(ngModel)]="courseSection.sectionName" placeholder="Course Name" size="50" maxlength="200"/>
+    </div><br>
+    <div>
+      <label>Course Section Code (extSectionId)</label><br>
+      <input [(ngModel)]="courseSection.extSectionId" placeholder="Section Code" size="30" maxlength="100"/>
+    </div>
+    <br>
+    <button (click)="save()" class="btn btn-primary">Save</button>
+  </div>
+  <div *ngIf="courseSection" class="lesson-page-section">
+    <h4>Lesson page for <{{courseSection.course.extCourseId}}>/<{{courseSection.extSectionId}}></h4>
+    <div class="lesson-page-div">
+      <ul>
+        <li class="lesson-page" *ngFor="let lessonPage of courseSection.lessonPages">
+          <a class="link-danger" href="">delete</a>
+          <a class="lesson-page-link">{{lessonPage.pageName}}</a>
+          <input type="text" value="1" maxlength="3" size="3">
+        </li>
+        <li class="lesson-page">
+          <a href="lesson-page-link">+ Add Lesson Page</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

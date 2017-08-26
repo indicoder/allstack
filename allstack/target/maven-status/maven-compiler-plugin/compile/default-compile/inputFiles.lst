@@ -3,12 +3,16 @@
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/pojo/User.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/App.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/pojo/Dashboard.java
+/Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/controllers/CourseSectionController.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/pojo/Trainer.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/common/AppResponse.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/pojo/CourseSection.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/dao/CourseDao.java
+/Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/dao/CourseSectionDao.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/pojo/QuestionType.java
+/Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/services/CourseSectionService.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/controllers/LoginController.java
+/Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/common/EnumCollection.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/pojo/Question.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/controllers/CourseController.java
 /Users/manas/W/workspace/allstack/allstack/src/main/java/com/allstack/pojo/DetailedCourse.java

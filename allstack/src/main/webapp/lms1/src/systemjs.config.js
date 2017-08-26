@@ -39,7 +39,9 @@
       },
       rxjs: {
         defaultExtension: 'js'
-      }
+      },
+      'ng2-bootstrap': { defaultExtension: 'js' },
+      'moment': 'npm:ng2-bootstrap/node_modules/moment/moment'
     }
   });
 })(this);

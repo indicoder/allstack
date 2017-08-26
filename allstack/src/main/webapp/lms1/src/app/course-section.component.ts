@@ -26,10 +26,10 @@ export class CourseSectionComponent implements OnInit {
       .subscribe(courseSection => this.courseSection = courseSection);
   }
 
-  save(): void {
+  /*save(): void {
     this.courseSectionService.update(this.courseSection)
       .then(() => this.goBack());
-  }
+  }*/
 
   goBack(): void {
     this.location.back();

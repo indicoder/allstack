@@ -1,0 +1,24 @@
+<div class="container" style="margin-top: 50px">
+  <h3>All Courses</h3>
+  <ul class="course-div">
+    <li *ngFor="let course of courses">
+      <div class="course">
+        <span>{{course.courseName}}</span>
+        <span>({{course.extCourseId}})</span>
+      </div>
+      <div class="course-section-div">
+        <ul>
+          <li class="course-section" *ngFor="let courseSection of course.courseSections">
+            <a class="link-danger" (click)="delete(courseSection); $event.stopPropagation()" href="">delete</a>
+            <a class="course-section-link" [routerLink]="['/coursesection', courseSection.courseSectionId]">{{courseSection.sectionName}}</a>
+            <input type="text" value="1" maxlength="3" size="3">
+          </li>
+          <li class="course-section">
+            <!--a class="course-section-link" (click)="openModal(template)">+ Add Course Section</a-->
+            <add-course-section-modal [course] = "course"></add-course-section-modal>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>

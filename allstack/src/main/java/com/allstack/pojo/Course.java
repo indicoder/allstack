@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "courses", uniqueConstraints = {
+@Table(name = "Courses", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "extCourseId") })
 public class Course {
 	private int courseId;
@@ -44,7 +44,7 @@ public class Course {
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
-	@JsonManagedReference
+	//@JsonManagedReference
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
 	public List<CourseSection> getCourseSections() {
 		return courseSections;
@@ -60,4 +60,17 @@ public class Course {
 	public void setExtCourseId(String extCourseId) {
 		this.extCourseId = extCourseId;
 	}	
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Course){
+			Course course = (Course)obj;
+			if(this.courseId == course.courseId)
+				return true;
+			else 
+				return false;
+		}else{
+			return false;
+		}
+	}
 }

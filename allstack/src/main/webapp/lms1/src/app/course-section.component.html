@@ -1,14 +1,30 @@
-<div *ngIf="courseSection">
-  <h4>Add/Edit Course Section for <{{courseSection.extSectionId}}></h4>
-  <div>
-    <label>Course Section Name (sectionName)</label><br>
-    <input [(ngModel)]="courseSection.sectionName" placeholder="Course Name" />
-  </div><br>
-  <div>
-    <label>Course Section Code (extSectionId)</label><br>
-    <input [(ngModel)]="courseSection.extSectionId" placeholder="Section Code" />
+<div class="container">
+  <div *ngIf="courseSection" class="course-section">
+    <h5>Add/Edit Course Section for <{{courseSection.course.extCourseId}}></h5>
+    <div>
+      <label>Course Section Name (sectionName)</label><br>
+      <input [(ngModel)]="courseSection.sectionName" placeholder="Course Name" size="50" maxlength="200"/>
+    </div><br>
+    <div>
+      <label>Course Section Code (extSectionId)</label><br>
+      <input [(ngModel)]="courseSection.extSectionId" placeholder="Section Code" size="30" maxlength="100"/>
+    </div>
+    <br>
+    <button (click)="save()" class="btn btn-primary">Save</button>
   </div>
-  <br><br>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+  <div *ngIf="courseSection" class="lesson-page-section">
+    <h5>Lesson page for <{{courseSection.course.extCourseId}}>/<{{courseSection.extSectionId}}></h5>
+    <div class="lesson-page-div">
+      <ul>
+        <li class="lesson-page" *ngFor="let lessonPage of courseSection.lessonPages">
+          <a class="link-danger" href="">delete</a>
+          <a class="lesson-page-link">{{lessonPage.pageName}}</a>
+          <input type="text" value="1" maxlength="3" size="3">
+        </li>
+        <li class="lesson-page">
+          <a href="lesson-page-link">+ Add Lesson Page</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

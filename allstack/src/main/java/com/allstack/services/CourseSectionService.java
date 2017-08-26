@@ -10,6 +10,21 @@ public class CourseSectionService {
 	CourseSectionDao courseSectionDao;
 	
 	public CourseSection getSectionById(int courseSectionId){
-		return courseSectionDao.getCourseSectionById(courseSectionId);
+		if(courseSectionId != -1)
+			return courseSectionDao.getCourseSectionById(courseSectionId);
+		else
+			return new CourseSection();
+	}
+	
+	public CourseSection addCourseSection(int courseId, String sectionName, String extSectionId){
+		return courseSectionDao.addCourseSection(courseId, sectionName, extSectionId);
+	}
+	
+	public boolean deleteCourseSection(int courseSectionId){
+		return courseSectionDao.deleteCourseSection(courseSectionId);
+	}
+	
+	public CourseSection updateCourseSection(CourseSection section){
+		return courseSectionDao.updateCourseSection(section);
 	}
 }

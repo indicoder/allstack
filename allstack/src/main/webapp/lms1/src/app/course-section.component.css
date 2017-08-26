@@ -1,22 +1,18 @@
-input {
-  height: 2rem;
-  font-size: .92rem;
-  padding-left: .4rem;
+.course-section{
+  margin-top: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ddd;
 }
-button {
-  margin-top: 20px;
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer; cursor: hand;
+.lesson-page-section{
+  margin-top: 30px;
 }
-button:hover {
-  background-color: #cfd8dc;
+.link-danger{
+  font-size: 12px;
+  color: red;
 }
-button:disabled {
-  background-color: #eee;
-  color: #ccc;
-  cursor: auto;
+.lesson-page{
+  margin: 0 0 1.2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 25em;
 }
