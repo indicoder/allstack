@@ -2,8 +2,6 @@ package com.allstack.pojo;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.util.ArrayList;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,8 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.allstack.pojo.serializers.QuizCollectionDeserializer;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@JsonDeserialize(using = QuizCollectionDeserializer.class)
 @Entity
 @Table(name = "QuizCollections", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "extQuizCollectionId") })
@@ -23,10 +25,21 @@ public class QuizCollection {
 	private int quizCollectionId;
 	private String extQuizCollectionId;
 	private String quizCollectionName;
-	private int isDefault;
-	private CourseSection section;
+	private int isDefault = 0;
+	private CourseSection courseSection;
 	//private ArrayList<Question> questions = new ArrayList<Question>();
 	
+	public QuizCollection(){}
+	
+	public QuizCollection(int quizCollectionId, String extQuizCollectionId, String quizCollectionName, int isDefault,
+			CourseSection courseSection) {
+		this.quizCollectionId = quizCollectionId;
+		this.extQuizCollectionId = extQuizCollectionId;
+		this.quizCollectionName = quizCollectionName;
+		this.isDefault = isDefault;
+		this.courseSection = courseSection;
+	}
+
 	public int getIsDefault() {
 		return isDefault;
 	}
@@ -49,6 +62,7 @@ public class QuizCollection {
 	public void setExtQuizCollectionId(String extQuizCollectionId) {
 		this.extQuizCollectionId = extQuizCollectionId;
 	}
+	@Column(name = "quizCollectionName", nullable = false)
 	public String getQuizCollectionName() {
 		return quizCollectionName;
 	}
@@ -61,13 +75,14 @@ public class QuizCollection {
 //	public void setQuestions(ArrayList<Question> questions) {
 //		this.questions = questions;
 //	}
-	@JsonBackReference
+    //@JsonBackReference
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="courseSectionId")
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="courseSectionId")
-	public CourseSection getSection() {
-		return section;
+	public CourseSection getCourseSection() {
+		return courseSection;
 	}
-	public void setSection(CourseSection section) {
-		this.section = section;
+	public void setCourseSection(CourseSection courseSection) {
+		this.courseSection = courseSection;
 	}
 }

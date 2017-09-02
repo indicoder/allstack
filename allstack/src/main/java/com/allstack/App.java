@@ -15,8 +15,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.allstack.dao.CourseDao;
 import com.allstack.dao.CourseSectionDao;
+import com.allstack.dao.LessonPageDao;
+import com.allstack.dao.QuizCollectionDao;
 import com.allstack.services.CourseSectionService;
 import com.allstack.services.CourseService;
+import com.allstack.services.LessonPageService;
+import com.allstack.services.QuizCollectionService;
 
 @SpringBootApplication
 public class App 
@@ -37,6 +41,16 @@ public class App
     }
     
     @Bean
+    public QuizCollectionService quizCollectionService(){
+    	return new QuizCollectionService();
+    }
+    
+    @Bean
+    public LessonPageService lessonPageService(){
+    	return new LessonPageService();
+    }
+    
+    @Bean
     public CourseDao courseDao(){
     	return new CourseDao();
     }
@@ -44,6 +58,16 @@ public class App
     @Bean
     public CourseSectionDao courseSectionDao(){
     	return new CourseSectionDao();
+    }
+    
+    @Bean 
+    public QuizCollectionDao quizCollectionDao(){
+    	return new QuizCollectionDao();
+    }
+    
+    @Bean 
+    public LessonPageDao lessonPageDao(){
+    	return new LessonPageDao();
     }
    
     @Bean

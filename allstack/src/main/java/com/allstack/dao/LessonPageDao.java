@@ -8,55 +8,55 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.allstack.pojo.CourseSection;
-import com.allstack.pojo.QuizCollection;
+import com.allstack.pojo.LessonPage;
 
-public class QuizCollectionDao {
+public class LessonPageDao {
 	@Autowired
 	SessionFactory sessionFactory;
 	
-	public QuizCollection getQuizCollectionById(int quizCollectionId){
+	public LessonPage getLessonPageById(int pageId){
 		Session session = sessionFactory.openSession();
-		QuizCollection quizCollection = null;
-		List<QuizCollection> singleQuizCollectionList = session.createQuery("select q from QuizCollection q where q.quizCollectionId=:quizCollectionId").setParameter("quizCollectionId", quizCollectionId).list();
-		if(!singleQuizCollectionList.isEmpty()){
-			quizCollection = singleQuizCollectionList.get(0);
+		LessonPage lessonPage = null;
+		List<LessonPage> singleLessonPageList = session.createQuery("select l from LessonPage l where l.pageId=:pageId").setParameter("pageId", pageId).list();
+		if(!singleLessonPageList.isEmpty()){
+			lessonPage = singleLessonPageList.get(0);
 		}
-		return quizCollection;
+		return lessonPage;
 	}
 	
 	/*
-	 * Quiz collection can be added against a CourseSection
+	 * LessonPage can be added against a CourseSection
 	 */
-	public QuizCollection addQuizCollection(int courseSectionId, String quizCollectionName, String extQuizCollectionId){
+	public LessonPage addLessonPage(int courseSectionId, String pageName, String extPageId){
 		Session session = sessionFactory.openSession();
-		QuizCollection quizCollection = null;
+		LessonPage lessonPage = null;
 		CourseSection section = null;
 		List<CourseSection> singleCourseSectionList = session.createQuery("select c from CourseSection c where c.courseSectionId=:courseSectionId").setParameter("courseSectionId", courseSectionId).list();
 		if(!singleCourseSectionList.isEmpty()){
 			//If coursesection is found, then insert the courseSection
 			session.beginTransaction();
 			section = singleCourseSectionList.get(0);
-		    quizCollection = new QuizCollection();
-		    quizCollection.setCourseSection(section);
-		    quizCollection.setQuizCollectionName(quizCollectionName);
-		    quizCollection.setExtQuizCollectionId(extQuizCollectionId);
+			lessonPage = new LessonPage();
+			lessonPage.setCourseSection(section);
+			lessonPage.setPageName(pageName);
+			lessonPage.setExtPageId(extPageId);
 			
-			session.saveOrUpdate(quizCollection);
+			session.saveOrUpdate(lessonPage);
 			
 			session.getTransaction().commit();
 		}else{
-			quizCollection = null;//Because course is not found
+			lessonPage = null;//Because course is not found
 		}
-		return quizCollection;
+		return lessonPage;
 	}
 	
-	public boolean deleteQuizCollection(int quizCollectionId){
+	public boolean deleteLessonPage(int pageId){
 		boolean isDeleteSuccess = false;
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
 		try {
-			String hql = "delete from QuizCollection where quizCollectionId=:quizCollectionId";
-			int rowsUpdated = session.createQuery(hql).setParameter("quizCollectionId", quizCollectionId).executeUpdate();
+			String hql = "delete from LessonPage where pageId=:pageId";
+			int rowsUpdated = session.createQuery(hql).setParameter("pageId", pageId).executeUpdate();
 			transaction.commit();
 			isDeleteSuccess = true;
 		} catch (Exception e) {
@@ -66,25 +66,25 @@ public class QuizCollectionDao {
 		return isDeleteSuccess;
 	}
 	
-	public QuizCollection updateQuizCollection(QuizCollection quizCollection){
+	public LessonPage updateLessonPage(LessonPage lessonPage){
 		Session session = sessionFactory.openSession();
-		if(quizCollection == null) return quizCollection;
-		CourseSection section = quizCollection.getCourseSection();
+		if(lessonPage == null) return lessonPage;
+		CourseSection section = lessonPage.getCourseSection();
 		//Does the section exist?
 		if(section == null){
-			return null; //QuizCollection can't be updated without a CourseSection
+			return null; //LessonPage can't be updated without a CourseSection
 		}
 		List<CourseSection> singleCourseSectionList = session.createQuery("select c from CourseSection c where c.courseSectionId=:courseSectionId").setParameter("courseSectionId", section.getCourseSectionId()).list();
 		if(!singleCourseSectionList.isEmpty()){
 			//If course is found, then add the right courseSection
 			CourseSection dbCourseSection = singleCourseSectionList.get(0);
-			quizCollection.setCourseSection(dbCourseSection);
+			lessonPage.setCourseSection(dbCourseSection);
 			session.beginTransaction();			
-			session.saveOrUpdate(quizCollection);			
+			session.saveOrUpdate(lessonPage);			
 			session.getTransaction().commit();
 		}else{
-			quizCollection = null;//Because courseSection is not found
+			lessonPage = null;//Because courseSection is not found
 		}
-		return quizCollection;
+		return lessonPage;
 	}
 }

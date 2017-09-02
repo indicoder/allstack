@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="back-to-prev"><a href="courses"><&nbsp;&nbsp;Back to Courses</a></div>
+  <div *ngIf="lessonPage" class="lesson-page">
+    <h4>Add/Edit Lesson Page for <{{lessonPage.courseSection.course.extCourseId}}><{{lessonPage.courseSection.extSectionId}}></h4>
+    <div>
+      <label>Lesson Page Name (pageName)</label><br>
+      <input [(ngModel)]="lessonPage.pageName" placeholder="Lesson Page Name" size="50" maxlength="200"/>
+    </div><br>
+    <div>
+      <label>Lesson Page Code (extPageId)</label><br>
+      <input [(ngModel)]="lessonPage.extPageId" placeholder="Lesson Page Code" size="30" maxlength="100"/>
+    </div>
+    <br>
+    <button (click)="save()" class="btn btn-primary">Save</button>
+  </div>
+  <div *ngIf="lessonPage" class="lesson-page">
+    <h4>Lesson Page for <{{lessonPage.courseSection.course.extCourseId}}><{{lessonPage.courseSection.extSectionId}}</h4>
+    <!--div class="questions-section-div">
+      <ul>
+        <li class="questions-section" *ngFor="let quizCollection of courseSection.lessonPages">
+          <a class="link-danger" href="">delete</a>
+          <a class="lesson-page-link">{{lessonPage.pageName}}</a>
+          <input type="text" value="1" maxlength="3" size="3">
+        </li>
+        <li class="lesson-page">
+          <a href="lesson-page-link">+ Add Lesson Page</a>
+        </li>
+      </ul>
+    </div-->
+  </div>
+</div>

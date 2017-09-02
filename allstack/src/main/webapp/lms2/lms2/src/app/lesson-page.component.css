@@ -1,7 +1,7 @@
 .back-to-prev{
   margin-top: 30px;
 }
-.quiz-collection{
+.lesson-page{
   margin-top: 50px;
   padding-bottom: 30px;
   border-bottom: 1px solid #ddd;
@@ -12,10 +12,4 @@
 .link-danger{
   font-size: 12px;
   color: red;
-}
-.lesson-page{
-  margin: 0 0 1.2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 25em;
 }

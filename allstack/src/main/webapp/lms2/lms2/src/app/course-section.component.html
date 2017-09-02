@@ -13,19 +13,37 @@
     <br>
     <button (click)="save()" class="btn btn-primary">Save</button>
   </div>
-  <div *ngIf="courseSection" class="lesson-page-section">
-    <h4>Lesson page for <{{courseSection.course.extCourseId}}>/<{{courseSection.extSectionId}}></h4>
-    <div class="lesson-page-div">
-      <ul>
-        <li class="lesson-page" *ngFor="let lessonPage of courseSection.lessonPages">
-          <a class="link-danger" href="">delete</a>
-          <a class="lesson-page-link">{{lessonPage.pageName}}</a>
-          <input type="text" value="1" maxlength="3" size="3">
-        </li>
-        <li class="lesson-page">
-          <a href="lesson-page-link">+ Add Lesson Page</a>
-        </li>
-      </ul>
+  <div *ngIf="courseSection">
+    <div class="lesson-page-section">
+      <h4>Lesson page for <{{courseSection.course.extCourseId}}>/<{{courseSection.extSectionId}}></h4>
+      <div class="lesson-page-div">
+        <ul>
+          <li class="lesson-page" *ngFor="let lessonPage of courseSection.lessonPages">
+            <a class="link-danger" (click)="deleteLessonPage(lessonPage); $event.stopPropagation()" href="">delete</a>
+            <a class="lesson-page-link" [routerLink]="['/lessonpage', lessonPage.pageId]">{{lessonPage.pageName}}</a>
+            <input type="text" value="1" maxlength="3" size="3">
+          </li>
+          <li class="lesson-page">
+            <add-lesson-page-modal [courseSection] = "courseSection"></add-lesson-page-modal>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="quiz-collection-section">
+      <h4>Quiz Collection for <{{courseSection.course.extCourseId}}>/<{{courseSection.extSectionId}}></h4>
+      <div class="quiz-collection-div">
+        <ul>
+          <li class="quiz-collection" *ngFor="let quizCollection of courseSection.quizCollections">
+            <a class="link-danger" (click)="deleteQuizCollection(quizCollection); $event.stopPropagation()" href="">delete</a>
+            <a class="quiz-collection-link" [routerLink]="['/quizcollection', quizCollection.quizCollectionId]">{{quizCollection.quizCollectionName}}</a>
+            <input type="text" value="1" maxlength="3" size="3">
+          </li>
+          <li class="quiz-collection">
+            <!--a href="add-quiz-collection-link">+ Add Quiz Collection</a-->
+            <add-quiz-collection-modal [courseSection] = "courseSection"></add-quiz-collection-modal>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -12,8 +12,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.allstack.pojo.serializers.LessonPageDeserializer;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@JsonDeserialize(using = LessonPageDeserializer.class)
 @Entity
 @Table(name = "LessonPages", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "extPageId") })
@@ -21,16 +25,16 @@ public class LessonPage {
 	private int pageId;
 	private String pageName;
 	private String extPageId;
-	private CourseSection section;
+	private CourseSection courseSection;
 	
-	@JsonBackReference
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="courseSectionId")
-	public CourseSection getSection() {
-		return section;
-	}
-	public void setSection(CourseSection section) {
-		this.section = section;
+	public LessonPage(){}
+	
+	public LessonPage(int pageId, String pageName, String extPageId, CourseSection courseSection) {
+		super();
+		this.pageId = pageId;
+		this.pageName = pageName;
+		this.extPageId = extPageId;
+		this.courseSection = courseSection;
 	}
 	
 	@Id
@@ -55,5 +59,15 @@ public class LessonPage {
 	}
 	public void setExtPageId(String extPageId) {
 		this.extPageId = extPageId;
+	}
+	
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="courseSectionId")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="courseSectionId")
+	public CourseSection getCourseSection() {
+		return courseSection;
+	}
+	public void setCourseSection(CourseSection courseSection) {
+		this.courseSection = courseSection;
 	}
 }

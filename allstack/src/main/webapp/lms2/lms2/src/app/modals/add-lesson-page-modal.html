@@ -1,0 +1,41 @@
+<!--a type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button-->
+<a role="button" class="lesson-page-link" (click)="openModal(template)">+ Add Lesson Page</a>
+
+<template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Add Lesson Page for section name <{{courseSection.courseSectionName}}>
+    <div>
+      <label>Lesson Page Name (pageName)</label><br>
+      <input [(ngModel)]="lessonPage.pageName" placeholder="Lesson Page Name" size="50" maxlength="200"/>
+    </div><br>
+    <div>
+      <label>Lesson Page Code (extPageId)</label><br>
+      <input [(ngModel)]="lessonPage.extPageId" placeholder="Lesson Page Code" size="30" maxlength="100"/>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="addLessonPage();">
+      Add
+    </button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+  </div>
+</template>
+
+<!--
+<div>
+  <label>Course Section Name (sectionName)</label><br>
+  <input [(ngModel)]="courseSection.sectionName" placeholder="Course Name" size="50" maxlength="200"/>
+</div><br>
+<div>
+  <label>Course Section Code (extSectionId)</label><br>
+  <input [(ngModel)]="courseSection.extSectionId" placeholder="Section Code" size="30" maxlength="100"/>
+</div>
+<br>
+<button (click)="save()" class="btn btn-primary">Save</button>
+-->

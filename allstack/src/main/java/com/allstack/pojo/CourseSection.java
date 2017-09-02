@@ -29,7 +29,24 @@ public class CourseSection {
 	private Course course;
 	private String extSectionId;
 	private List<LessonPage> lessonPages = new ArrayList<LessonPage>();
-	private List<QuizCollection> quizCollection = new ArrayList<QuizCollection>();
+	private List<QuizCollection> quizCollections = new ArrayList<QuizCollection>();
+	
+	public CourseSection(){}
+	
+	public CourseSection(int courseSectionId){
+		this.courseSectionId = courseSectionId;
+	}
+	
+	public CourseSection(int courseSectionId, String sectionName, Course course, String extSectionId,
+			List<LessonPage> lessonPages, List<QuizCollection> quizCollections) {
+		super();
+		this.courseSectionId = courseSectionId;
+		this.sectionName = sectionName;
+		this.course = course;
+		this.extSectionId = extSectionId;
+		this.lessonPages = lessonPages;
+		this.quizCollections = quizCollections;
+	}
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -64,19 +81,19 @@ public class CourseSection {
 		this.extSectionId = extSectionId;
 	}	
 	@JsonManagedReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "section")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "courseSection")
 	public List<LessonPage> getLessonPages() {
 		return lessonPages;
 	}
 	public void setLessonPages(List<LessonPage> lessonPages) {
 		this.lessonPages = lessonPages;
 	}
-	@JsonManagedReference
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "section")
-	public List<QuizCollection> getQuizCollection() {
-		return quizCollection;
+	//@JsonManagedReference
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "courseSection")
+	public List<QuizCollection> getQuizCollections() {
+		return quizCollections;
 	}
-	public void setQuizCollection(List<QuizCollection> quizCollection) {
-		this.quizCollection = quizCollection;
+	public void setQuizCollections(List<QuizCollection> quizCollections) {
+		this.quizCollections = quizCollections;
 	}
 }

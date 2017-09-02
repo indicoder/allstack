@@ -26,4 +26,13 @@ export class QuizCollectionComponent implements OnInit {
       .switchMap((params: ParamMap) => this.quizCollectionService.getQuizCollection(+params.get('id')))
       .subscribe(quizCollection => this.quizCollection = quizCollection);
   }
+
+  save(): void {
+    this.quizCollectionService.update(this.quizCollection)
+      .then(() => this.goBack());
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
 }
