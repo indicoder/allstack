@@ -1,7 +1,7 @@
 <div class="container">
   <div class="back-to-prev"><a href="courses"><&nbsp;&nbsp;Back to Courses</a></div>
   <div *ngIf="courseSection" class="course-section">
-    <h4>Add/Edit Course Section for <{{courseSection.course.extCourseId}}></h4>
+    <h4>Edit Course Section for <{{courseSection.course.extCourseId}}></h4>
     <div>
       <label>Course Section Name (sectionName)</label><br>
       <input [(ngModel)]="courseSection.sectionName" placeholder="Course Name" size="50" maxlength="200"/>

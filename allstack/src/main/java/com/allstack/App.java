@@ -16,10 +16,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import com.allstack.dao.CourseDao;
 import com.allstack.dao.CourseSectionDao;
 import com.allstack.dao.LessonPageDao;
+import com.allstack.dao.QuestionDao;
 import com.allstack.dao.QuizCollectionDao;
 import com.allstack.services.CourseSectionService;
 import com.allstack.services.CourseService;
 import com.allstack.services.LessonPageService;
+import com.allstack.services.QuestionService;
 import com.allstack.services.QuizCollectionService;
 
 @SpringBootApplication
@@ -51,6 +53,11 @@ public class App
     }
     
     @Bean
+    public QuestionService questionService(){
+    	return new QuestionService();
+    }
+    
+    @Bean
     public CourseDao courseDao(){
     	return new CourseDao();
     }
@@ -68,6 +75,11 @@ public class App
     @Bean 
     public LessonPageDao lessonPageDao(){
     	return new LessonPageDao();
+    }
+    
+    @Bean
+    public QuestionDao questionDao(){
+    	return new QuestionDao();
     }
    
     @Bean

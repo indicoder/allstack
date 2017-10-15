@@ -1,7 +1,7 @@
 <div class="container">
   <div class="back-to-prev"><a href="courses"><&nbsp;&nbsp;Back to Courses</a></div>
   <div *ngIf="quizCollection" class="quiz-collection">
-    <h4>Add/Edit Quiz Collection for <{{quizCollection.courseSection.course.extCourseId}}><{{quizCollection.courseSection.extSectionId}}></h4>
+    <h4>Edit Quiz Collection for <{{quizCollection.courseSection.course.extCourseId}}><{{quizCollection.courseSection.extSectionId}}></h4>
     <div>
       <label>Quiz Collection Name (quizCollectionName)</label><br>
       <input [(ngModel)]="quizCollection.quizCollectionName" placeholder="Quiz Collection Name" size="50" maxlength="200"/>
@@ -14,18 +14,16 @@
     <button (click)="save()" class="btn btn-primary">Save</button>
   </div>
   <div *ngIf="quizCollection" class="quiz-collection">
-    <h4>Quiz Collection for <{{quizCollection.courseSection.course.extCourseId}}><{{quizCollection.courseSection.extSectionId}}</h4>
-    <!--div class="questions-section-div">
+    <h4>Questions for <{{quizCollection.courseSection.course.extCourseId}}>/<{{quizCollection.courseSection.extSectionId}}>/<{{quizCollection.extQuizCollectionId}}></h4>
+    <div class="questions-section-div">
       <ul>
-        <li class="questions-section" *ngFor="let quizCollection of courseSection.lessonPages">
-          <a class="link-danger" href="">delete</a>
-          <a class="lesson-page-link">{{lessonPage.pageName}}</a>
+        <li class="questions-section" *ngFor="let question of quizCollection.questions">
+          <a class="link-danger" (click)="deleteQuestion(question); $event.stopPropagation()" href="">delete</a>
+          <a class="lesson-page-link">{{question.quizQuestionHTML}}</a>
           <input type="text" value="1" maxlength="3" size="3">
         </li>
-        <li class="lesson-page">
-          <a href="lesson-page-link">+ Add Lesson Page</a>
-        </li>
+        <addedit-question-modal [quizCollection] = "quizCollection"></addedit-question-modal>
       </ul>
-    </div-->
+    </div>
   </div>
 </div>

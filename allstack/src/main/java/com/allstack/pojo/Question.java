@@ -1,19 +1,70 @@
 package com.allstack.pojo;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+@Entity
+@Table(name = "Questions", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "extQuestionId") })
 public class Question {
 	private int questionId;
 	private String extQuestionId;
-	private QuestionType questionType;
-	private String choice1;
-	private String choice2;
-	private String choice3;
-	private String choice4;
-	private boolean isChoice1Correct;
-	private boolean isChoice2Correct;
-	private boolean isChoice3Correct;
-	private boolean isChoice4Correct;
-	private String answerString;
+	//private QuestionType questionType;
+	private QuizCollection quizCollection;
+	private String quizQuestionHTML;
+	private String choice1HTML;
+	private String choice2HTML;
+	private String choice3HTML;
+	private String choice4HTML;
+	private Integer isChoice1Correct;
+	private Integer isChoice2Correct;
+	private Integer isChoice3Correct;
+	private Integer isChoice4Correct;
+	private String answerHTML;
+	private String answerHintHTML;
+	private String answerExplanationHTML;
+	private Integer pointsForQuestion;
 	
+	public Question(){}
+	
+	public Question(Integer questionId, String extQuestionId, /*QuestionType questionType,*/ QuizCollection quizCollection,
+			String quizQuestionHTML, String choice1html, String choice2html, String choice3html, String choice4html,
+			Integer isChoice1Correct, Integer isChoice2Correct, Integer isChoice3Correct, Integer isChoice4Correct, String answerHTML,
+			String answerHintHTML, String answerExplanationHTML, Integer pointsForQuestion) {
+		this.questionId = questionId;
+		this.extQuestionId = extQuestionId;
+		//this.questionType = questionType;
+		this.quizCollection = quizCollection;
+		this.quizQuestionHTML = quizQuestionHTML;
+		choice1HTML = choice1html;
+		choice2HTML = choice2html;
+		choice3HTML = choice3html;
+		choice4HTML = choice4html;
+		this.isChoice1Correct = isChoice1Correct;
+		this.isChoice2Correct = isChoice2Correct;
+		this.isChoice3Correct = isChoice3Correct;
+		this.isChoice4Correct = isChoice4Correct;
+		this.answerHTML = answerHTML;
+		this.answerHintHTML = answerHintHTML;
+		this.answerExplanationHTML = answerExplanationHTML;
+		this.pointsForQuestion = pointsForQuestion;
+	}
+
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "questionId", unique = true, nullable = false)
 	public int getQuestionId() {
 		return questionId;
 	}
@@ -26,64 +77,101 @@ public class Question {
 	public void setExtQuestionId(String extQuestionId) {
 		this.extQuestionId = extQuestionId;
 	}
-	public QuestionType getQuestionType() {
-		return questionType;
+//	public QuestionType getQuestionType() {
+//		return questionType;
+//	}
+//	public void setQuestionType(QuestionType questionType) {
+//		this.questionType = questionType;
+//	}
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="quizCollectionId")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="quizCollectionId")
+	public QuizCollection getQuizCollection() {
+		return quizCollection;
 	}
-	public void setQuestionType(QuestionType questionType) {
-		this.questionType = questionType;
+	public void setQuizCollection(QuizCollection quizCollection) {
+		this.quizCollection = quizCollection;
 	}
-	public String getChoice1() {
-		return choice1;
+	public String getQuizQuestionHTML() {
+		return quizQuestionHTML;
 	}
-	public void setChoice1(String choice1) {
-		this.choice1 = choice1;
+	public void setQuizQuestionHTML(String quizQuestionHTML) {
+		this.quizQuestionHTML = quizQuestionHTML;
 	}
-	public String getChoice2() {
-		return choice2;
+	public String getChoice1HTML() {
+		return choice1HTML;
 	}
-	public void setChoice2(String choice2) {
-		this.choice2 = choice2;
+	public void setChoice1HTML(String choice1html) {
+		choice1HTML = choice1html;
 	}
-	public String getChoice3() {
-		return choice3;
+	public String getChoice2HTML() {
+		return choice2HTML;
 	}
-	public void setChoice3(String choice3) {
-		this.choice3 = choice3;
+	public void setChoice2HTML(String choice2html) {
+		choice2HTML = choice2html;
 	}
-	public String getChoice4() {
-		return choice4;
+	public String getChoice3HTML() {
+		return choice3HTML;
 	}
-	public void setChoice4(String choice4) {
-		this.choice4 = choice4;
+	public void setChoice3HTML(String choice3html) {
+		choice3HTML = choice3html;
 	}
-	public boolean isChoice1Correct() {
+	public String getChoice4HTML() {
+		return choice4HTML;
+	}
+	public void setChoice4HTML(String choice4html) {
+		choice4HTML = choice4html;
+	}
+	public Integer getIsChoice1Correct() {
 		return isChoice1Correct;
 	}
-	public void setChoice1Correct(boolean isChoice1Correct) {
+	public void setIsChoice1Correct(Integer isChoice1Correct) {
 		this.isChoice1Correct = isChoice1Correct;
 	}
-	public boolean isChoice2Correct() {
+	public Integer getIsChoice2Correct() {
 		return isChoice2Correct;
 	}
-	public void setChoice2Correct(boolean isChoice2Correct) {
+	public void setIsChoice2Correct(Integer isChoice2Correct) {
 		this.isChoice2Correct = isChoice2Correct;
 	}
-	public boolean isChoice3Correct() {
+	public Integer getIsChoice3Correct() {
 		return isChoice3Correct;
 	}
-	public void setChoice3Correct(boolean isChoice3Correct) {
+	public void setIsChoice3Correct(Integer isChoice3Correct) {
 		this.isChoice3Correct = isChoice3Correct;
 	}
-	public boolean isChoice4Correct() {
+	public Integer getIsChoice4Correct() {
 		return isChoice4Correct;
 	}
-	public void setChoice4Correct(boolean isChoice4Correct) {
+	public void setIsChoice4Correct(Integer isChoice4Correct) {
 		this.isChoice4Correct = isChoice4Correct;
 	}
-	public String getAnswerString() {
-		return answerString;
+	public String getAnswerHTML() {
+		return answerHTML;
 	}
-	public void setAnswerString(String answerString) {
-		this.answerString = answerString;
+	public void setAnswerHTML(String answerHTML) {
+		this.answerHTML = answerHTML;
+	}
+	public Integer getPointsForQuestion() {
+		return pointsForQuestion;
+	}
+	public void setPointsForQuestion(Integer pointsForQuestion) {
+		this.pointsForQuestion = pointsForQuestion;
+	}
+
+	public String getAnswerExplanationHTML() {
+		return answerExplanationHTML;
+	}
+
+	public void setAnswerExplanationHTML(String answerExplanationHTML) {
+		this.answerExplanationHTML = answerExplanationHTML;
+	}
+
+	public String getAnswerHintHTML() {
+		return answerHintHTML;
+	}
+
+	public void setAnswerHintHTML(String answerHintHTML) {
+		this.answerHintHTML = answerHintHTML;
 	}
 }

@@ -9,7 +9,7 @@ import { QuizCollection } from './domain/quiz-collection';
 export class QuizCollectionService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private quizCollectionUrl = 'http://localhost:9080/api/quizCollection';  // URL to web api
-  private courseSectionAddUrl = 'http://localhost:9080/api/quizCollection/add';  // URL to web api
+  private quizCollectionAddUrl = 'http://localhost:9080/api/quizCollection/add';  // URL to web api
 
   constructor(private http: Http) { }
 
@@ -23,7 +23,7 @@ export class QuizCollectionService {
 
   create(courseSectionId: number, quizCollectionName: string, extQuizCollectionId: string): Promise<QuizCollection> {
     return this.http
-      .post(this.courseSectionAddUrl, JSON.stringify({"courseSection": {courseSectionId: courseSectionId}, quizCollectionName: quizCollectionName, extQuizCollectionId: extQuizCollectionId}), {headers: this.headers})
+      .post(this.quizCollectionAddUrl, JSON.stringify({"courseSection": {courseSectionId: courseSectionId}, quizCollectionName: quizCollectionName, extQuizCollectionId: extQuizCollectionId}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as QuizCollection)
       .catch(this.handleError);

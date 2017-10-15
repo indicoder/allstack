@@ -19,7 +19,7 @@ public class QuizCollectionDeserializer extends JsonDeserializer<QuizCollection>
 		String extQuizCollectionId = null;
 		String quizCollectionName = null;
 		Integer courseSectionId = null;
-		int isDefault = 0;
+		Integer isDefault = null;
 		if(node.get("quizCollectionId") != null)
 			quizCollectionId = (Integer) ((IntNode) node.get("quizCollectionId")).numberValue();
 		if(node.get("extQuizCollectionId") != null)

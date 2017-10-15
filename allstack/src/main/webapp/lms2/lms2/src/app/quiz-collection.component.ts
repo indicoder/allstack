@@ -4,7 +4,9 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
 
 import { QuizCollection }        from './domain/quiz-collection';
+import { Question } from './domain/question';
 import { QuizCollectionService } from './quiz-collection.service';
+import { QuestionService } from './question.service'
 
 @Component({
   selector: 'quiz-collection',
@@ -17,6 +19,7 @@ export class QuizCollectionComponent implements OnInit {
 
   constructor(
     private quizCollectionService: QuizCollectionService,
+    private questionService: QuestionService,
     private route: ActivatedRoute,
     private location: Location
   ) {}
@@ -30,6 +33,15 @@ export class QuizCollectionComponent implements OnInit {
   save(): void {
     this.quizCollectionService.update(this.quizCollection)
       .then(() => this.goBack());
+  }
+
+  deleteQuestion(question: Question): void {
+    this.questionService
+        .delete(question.questionId)
+        .then(() => {
+          //this.courses = this.courses.filter(h => h !== courseSection);
+          //if (this.selectedHero === hero) { this.selectedHero = null; }
+        });
   }
 
   goBack(): void {

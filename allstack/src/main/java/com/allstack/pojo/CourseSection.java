@@ -24,7 +24,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Table(name = "CourseSections", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "extSectionId") })
 public class CourseSection {
-	private int courseSectionId; 
+	private Integer courseSectionId; 
 	private String sectionName;
 	private Course course;
 	private String extSectionId;
@@ -33,11 +33,11 @@ public class CourseSection {
 	
 	public CourseSection(){}
 	
-	public CourseSection(int courseSectionId){
+	public CourseSection(Integer courseSectionId){
 		this.courseSectionId = courseSectionId;
 	}
 	
-	public CourseSection(int courseSectionId, String sectionName, Course course, String extSectionId,
+	public CourseSection(Integer courseSectionId, String sectionName, Course course, String extSectionId,
 			List<LessonPage> lessonPages, List<QuizCollection> quizCollections) {
 		super();
 		this.courseSectionId = courseSectionId;
@@ -51,10 +51,10 @@ public class CourseSection {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "courseSectionId", unique = true, nullable = false)
-	public int getCourseSectionId() {
+	public Integer getCourseSectionId() {
 		return courseSectionId;
 	}
-	public void setCourseSectionId(int courseSectionId) {
+	public void setCourseSectionId(Integer courseSectionId) {
 		this.courseSectionId = courseSectionId;
 	}
 	public String getSectionName() {

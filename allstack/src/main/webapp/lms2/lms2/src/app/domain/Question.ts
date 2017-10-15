@@ -1,5 +1,8 @@
-export class QuizQuestion {
-  quizQuestionId: number;
-  extQuizQuestionId: string;
+import { QuizCollection }   from './quiz-collection'
+
+export class Question {
+  questionId: number;
+  extQuestionId: string;
+  quizCollection: QuizCollection;
   quizQuestionHTML: string;
 }
