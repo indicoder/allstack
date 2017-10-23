@@ -1,22 +1,83 @@
 <!--a type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button-->
-<a role="button" class="quiz-collection-link" (click)="openModal(template)">+ Add Question</a>
+<div *ngIf="modalAction == 'add'">
+  <a role="button" class="quiz-collection-link" (click)="openModal(template,1)">+ Add Single Choice Question</a><br>
+  <a role="button" class="quiz-collection-link" (click)="openModal(template,2)">+ Add Multi Choice Question</a><br>
+  <a role="button" class="quiz-collection-link" (click)="openModal(template,3)">+ Add Code Output Question</a><br>
+  <a role="button" class="quiz-collection-link" (click)="openModal(template,4)">+ Add Fill the Blanks Question</a>
+</div>
+
+<div *ngIf="modalAction == 'edit'">
+  <a role="button" class="quiz-collection-link" (click)="openModal(template)">+ Edit Question</a>
+</div>
 
 <template #template>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
+    <h4 *ngIf="questionType == 1" class="modal-title pull-left">Single Choice Question</h4>
+    <h4 *ngIf="questionType == 2" class="modal-title pull-left">Multi Choice Question</h4>
+    <h4 *ngIf="questionType == 2" class="modal-title pull-left">Code Output Question</h4>
+    <h4 *ngIf="questionType == 4" class="modal-title pull-left">Fill the Blanks Question</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    Add Question for quiz collection name <{{quizCollection.extQuizCollectionId}}>
     <div>
       <label>Enter Quiz Question (quizQuestionHTML)</label><br>
-      <input [(ngModel)]="question.quizQuestionHTML" placeholder="Enter Quiz Question" size="50" maxlength="200"/>
+      <textarea [(ngModel)]="question.quizQuestionHTML" class="form-control" rows="8"  placeholder="Enter Quiz Question"></textarea>
+    </div><br>
+    <div>
+      <label>Points for Question</label><br>
+      <input [(ngModel)]="question.pointsForQuestion" placeholder="0" size="3" maxlength="3"/>
+    </div><br>
+    <div id="choiceDiv" *ngIf="questionType == 1 || questionType == 2">
+      <div>
+        <label>choice1HTML</label><br>
+        <textarea [(ngModel)]="question.choice1HTML" class="form-control" rows="2"  placeholder="Enter choice1HTML"></textarea>
+      </div><br>
+      <div>
+        <label>choice2HTML</label><br>
+        <textarea [(ngModel)]="question.choice2HTML" class="form-control" rows="2"  placeholder="Enter choice2HTML"></textarea>
+      </div><br>
+      <div>
+        <label>choice3HTML</label><br>
+        <textarea [(ngModel)]="question.choice3HTML" class="form-control" rows="2"  placeholder="Enter choice3HTML"></textarea>
+      </div><br>
+      <div>
+        <label>choice4HTML</label><br>
+        <textarea [(ngModel)]="question.choice4HTML" class="form-control" rows="2"  placeholder="Enter choice4HTML"></textarea>
+      </div><br>
+      <div *ngIf="questionType == 1">
+        <label>Select right answer</label><br>
+        <div class="btn-group">
+          <label class="btn" [(ngModel)]="singleChoiceAnswer" btnRadio="Opt1">Opt 1</label>
+          <label class="btn" [(ngModel)]="singleChoiceAnswer" btnRadio="Opt2">Opt 2</label>
+          <label class="btn" [(ngModel)]="singleChoiceAnswer" btnRadio="Opt3">Opt 3</label>
+          <label class="btn" [(ngModel)]="singleChoiceAnswer" btnRadio="Opt4">Opt 4</label>
+        </div>
+      </div><br>
+      <div *ngIf="questionType == 2">
+        <div class="btn-group">
+          <label class="btn" [(ngModel)]="multiChoiceAnswer.Opt1" btnCheckbox>Opt 1</label>
+          <label class="btn" [(ngModel)]="multiChoiceAnswer.Opt2" btnCheckbox>Opt 2</label>
+          <label class="btn" [(ngModel)]="multiChoiceAnswer.Opt3" btnCheckbox>Opt 3</label>
+          <label class="btn" [(ngModel)]="multiChoiceAnswer.Opt4" btnCheckbox>Opt 4</label>
+        </div><br>
+      </div>
+    </div>
+    <div>
+      <label>answerHintHTML</label><br>
+      <textarea [(ngModel)]="question.answerHintHTML" class="form-control" rows="2"  placeholder="Enter answerHintHTML"></textarea>
+    </div><br>
+    <div>
+      <label>answerExplanationHTML</label><br>
+      <textarea [(ngModel)]="question.answerExplanationHTML" class="form-control" rows="2"  placeholder="Enter answerExplanationHTML"></textarea>
     </div><br>
   </div>
   <div class="modal-footer">
-    <button (click)="addQuestion();">
+    <button *ngIf="modalAction == 'edit'" (click)="updateQuestion();">
+      Update
+    </button>
+    <button *ngIf="modalAction == 'add'" (click)="addQuestion();">
       Add
     </button>
     <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>

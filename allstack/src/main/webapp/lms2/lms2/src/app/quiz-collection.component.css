@@ -19,3 +19,12 @@
   padding: 0;
   width: 25em;
 }
+::ng-deep pre.prettyprint {
+    padding: 2px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    font-size: 14px;
+}
+pre{
+  background-color: #fff;
+}

@@ -5,6 +5,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -12,16 +14,22 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.allstack.common.EnumCollection;
+import com.allstack.pojo.serializers.QuestionDeserializer;
+import com.allstack.pojo.serializers.QuizCollectionDeserializer;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@JsonDeserialize(using = QuestionDeserializer.class)
 @Entity
 @Table(name = "Questions", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "extQuestionId") })
 public class Question {
 	private int questionId;
 	private String extQuestionId;
-	//private QuestionType questionType;
+	//private EnumCollection.QuestionType questionType;
+	private int questionType;
 	private QuizCollection quizCollection;
 	private String quizQuestionHTML;
 	private String choice1HTML;
@@ -39,13 +47,13 @@ public class Question {
 	
 	public Question(){}
 	
-	public Question(Integer questionId, String extQuestionId, /*QuestionType questionType,*/ QuizCollection quizCollection,
+	public Question(Integer questionId, String extQuestionId, int questionType, QuizCollection quizCollection,
 			String quizQuestionHTML, String choice1html, String choice2html, String choice3html, String choice4html,
 			Integer isChoice1Correct, Integer isChoice2Correct, Integer isChoice3Correct, Integer isChoice4Correct, String answerHTML,
 			String answerHintHTML, String answerExplanationHTML, Integer pointsForQuestion) {
 		this.questionId = questionId;
 		this.extQuestionId = extQuestionId;
-		//this.questionType = questionType;
+		this.questionType = questionType;
 		this.quizCollection = quizCollection;
 		this.quizQuestionHTML = quizQuestionHTML;
 		choice1HTML = choice1html;
@@ -59,6 +67,13 @@ public class Question {
 		this.answerHTML = answerHTML;
 		this.answerHintHTML = answerHintHTML;
 		this.answerExplanationHTML = answerExplanationHTML;
+		this.pointsForQuestion = pointsForQuestion;
+	}
+
+	public Question(int questionId, QuizCollection quizCollection, String quizQuestionHTML, Integer pointsForQuestion) {
+		this.questionId = questionId;
+		this.quizCollection = quizCollection;
+		this.quizQuestionHTML = quizQuestionHTML;
 		this.pointsForQuestion = pointsForQuestion;
 	}
 
@@ -77,12 +92,12 @@ public class Question {
 	public void setExtQuestionId(String extQuestionId) {
 		this.extQuestionId = extQuestionId;
 	}
-//	public QuestionType getQuestionType() {
-//		return questionType;
-//	}
-//	public void setQuestionType(QuestionType questionType) {
-//		this.questionType = questionType;
-//	}
+	public int getQuestionType() {
+		return questionType;
+	}
+	public void setQuestionType(int questionType) {
+		this.questionType = questionType;
+	}
 	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="quizCollectionId")
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="quizCollectionId")

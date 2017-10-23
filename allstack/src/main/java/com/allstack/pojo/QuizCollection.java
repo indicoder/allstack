@@ -36,6 +36,10 @@ public class QuizCollection {
 	
 	public QuizCollection(){}
 	
+	public QuizCollection(Integer quizCollectionId){
+		this.quizCollectionId = quizCollectionId;
+	}
+	
 	public QuizCollection(int quizCollectionId, String extQuizCollectionId, String quizCollectionName, Integer isDefault,
 			CourseSection courseSection) {
 		this.quizCollectionId = quizCollectionId;

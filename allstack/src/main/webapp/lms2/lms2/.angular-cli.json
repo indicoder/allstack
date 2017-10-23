@@ -20,9 +20,10 @@
       "prefix": "app",
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "styles.css"
+        "styles.css",
+        "google-code-prettify/prettify.css"
       ],
-      "scripts": [],
+      "scripts": ["google-code-prettify/prettify.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

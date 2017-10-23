@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AlertModule, ModalModule } from 'ngx-bootstrap';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +17,7 @@ import { AddCourseSectionModalComponent } from './modals/add-course-section-moda
 import { AddQuizCollectionModalComponent } from './modals/add-quiz-collection-modal'
 import { AddLessonPageModalComponent } from './modals/add-lesson-page-modal'
 import { AddEditQuestionModalComponent } from './modals/addedit-question-modal'
+import { EditQuestionModalComponent } from './modals/edit-question-modal'
 
 import { CourseService }          from './course.service';
 import { CourseSectionService }          from './course-section.service';
@@ -27,10 +29,10 @@ import { QuestionService } from './question.service'
   declarations: [
     AppComponent, AddCourseSectionModalComponent, QuizCollectionComponent, LessonPageComponent,
     CoursesComponent, CourseSectionComponent, AddQuizCollectionModalComponent, AddLessonPageModalComponent,
-    QuestionComponent, AddEditQuestionModalComponent
+    QuestionComponent, AddEditQuestionModalComponent, EditQuestionModalComponent
   ],
   imports: [
-    BrowserModule, AlertModule.forRoot(), ModalModule.forRoot(),AppRoutingModule, HttpModule, FormsModule
+    BrowserModule, AlertModule.forRoot(), ModalModule.forRoot(), ButtonsModule.forRoot() ,AppRoutingModule, HttpModule, FormsModule
   ],
   providers: [CourseService, CourseSectionService, QuizCollectionService, LessonPageService, QuestionService],
   bootstrap: [AppComponent]

@@ -1,0 +1,41 @@
+<!--a type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button-->
+<a role="button" class="quiz-collection-link" (click)="openModal(template)">+ Edit Question</a>
+
+<template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Add Question for quiz collection name <{{question.quizCollection.extQuizCollectionId}}>
+    <div>
+      <label>Enter Quiz Question (quizQuestionHTML)</label><br>
+      <textarea [(ngModel)]="question.quizQuestionHTML" class="form-control" rows="8"  placeholder="Enter Quiz Question"></textarea>
+    </div><br>
+    <div>
+      <label>Points for Question</label><br>
+      <input [(ngModel)]="question.pointsForQuestion" placeholder="0" size="3" maxlength="3"/>
+    </div><br>
+  </div>
+  <div class="modal-footer">
+    <button (click)="updateQuestion();">
+      Update
+    </button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+  </div>
+</template>
+
+<!--
+<div>
+  <label>Course Section Name (sectionName)</label><br>
+  <input [(ngModel)]="courseSection.sectionName" placeholder="Course Name" size="50" maxlength="200"/>
+</div><br>
+<div>
+  <label>Course Section Code (extSectionId)</label><br>
+  <input [(ngModel)]="courseSection.extSectionId" placeholder="Section Code" size="30" maxlength="100"/>
+</div>
+<br>
+<button (click)="save()" class="btn btn-primary">Save</button>
+-->

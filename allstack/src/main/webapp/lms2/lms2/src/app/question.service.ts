@@ -21,9 +21,11 @@ export class QuestionService {
       .catch(this.handleError);
   }
 
-  create(quizCollectionId: number, quizQuestionHTML: string): Promise<Question> {
+  //create(quizCollectionId: number, quizQuestionHTML: string, questionType: number): Promise<Question> {
+  create(question: Question): Promise<Question> {
     return this.http
-      .post(this.questionAddUrl, JSON.stringify({"quizCollection": {quizCollectionId: quizCollectionId}, quizQuestionHTML: quizQuestionHTML}), {headers: this.headers})
+      //.post(this.questionAddUrl, JSON.stringify({"quizCollection": {quizCollectionId: quizCollectionId}, quizQuestionHTML: quizQuestionHTML, questionType: questionType}), {headers: this.headers})
+      .post(this.questionAddUrl, JSON.stringify(question), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as Question)
       .catch(this.handleError);

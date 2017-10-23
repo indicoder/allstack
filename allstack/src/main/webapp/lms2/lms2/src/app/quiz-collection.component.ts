@@ -1,12 +1,19 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit }        from '@angular/core';
+import { Component,NgModule,  OnInit, AfterViewChecked }        from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
+import { Http } from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { FormsModule }   from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser'
 
 import { QuizCollection }        from './domain/quiz-collection';
 import { Question } from './domain/question';
 import { QuizCollectionService } from './quiz-collection.service';
 import { QuestionService } from './question.service'
+
+declare var PR: any;
+import "../google-code-prettify/prettify.js?skin=sunburst"
 
 @Component({
   selector: 'quiz-collection',
@@ -14,14 +21,16 @@ import { QuestionService } from './question.service'
   styleUrls: [ './quiz-collection.component.css' ]
 })
 
-export class QuizCollectionComponent implements OnInit {
+export class QuizCollectionComponent implements OnInit, AfterViewChecked {
   quizCollection: QuizCollection;
+  code: string;
 
   constructor(
     private quizCollectionService: QuizCollectionService,
     private questionService: QuestionService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private http: Http
   ) {}
 
   ngOnInit(): void {
@@ -47,4 +56,24 @@ export class QuizCollectionComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  ngAfterViewChecked(){
+      //var PR;
+      //console.log('ngAfterViewChecked')
+      PR.prettyPrint();
+  }
+
+  /*public openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }*/
+
+  /*refresh(){
+    this.http.get("code.html")
+    .subscribe(
+      res => {
+        this.code = res._body;
+      },
+      ()=>{},
+      ()=>{})
+  }*/
 }
