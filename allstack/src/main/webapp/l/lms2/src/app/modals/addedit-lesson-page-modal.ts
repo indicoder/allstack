@@ -7,10 +7,10 @@ import { LessonPageService } from '../lesson-page.service';
 import { LessonPage }        from '../domain/lesson-page';
 
 @Component({
-  selector: 'add-lesson-page-modal',
-  templateUrl: './add-lesson-page-modal.html'
+  selector: 'addedit-lesson-page-modal',
+  templateUrl: './addedit-lesson-page-modal.html'
 })
-export class AddLessonPageModalComponent implements OnInit{
+export class AddEditLessonPageModalComponent implements OnInit{
   public modalRef: BsModalRef;
   lessonPage: LessonPage;
   @Input() courseSection: CourseSection;
@@ -28,12 +28,12 @@ export class AddLessonPageModalComponent implements OnInit{
   }
 
   addLessonPage(): void {
-    this.lessonPage.pageName = this.lessonPage.pageName.trim();
-    this.lessonPage.extPageId = this.lessonPage.extPageId.trim();
+    this.lessonPage.courseSection = this.courseSection;
     if (!this.lessonPage.pageName || !this.lessonPage.extPageId) { return; }
-    this.lessonPageService.create( this.courseSection.courseSectionId, this.lessonPage.pageName, this.lessonPage.extPageId)
+    this.lessonPageService.create(this.lessonPage)
       .then(lessonPage => {
         this.courseSection.lessonPages.push(lessonPage);
+        this.modalRef.hide();
         //this.quizCollection = null;
       });
   }

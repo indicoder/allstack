@@ -16,15 +16,11 @@ public class LessonPageService {
 			return new LessonPage();
 	}
 	
-	public LessonPage addLessonPage(int pageId, String pageName, String extPageId){
-		return lessonPageDao.addLessonPage(pageId, pageName, extPageId);
-	}
+	public LessonPage addOrUpdateLessonPage(LessonPage lessonPage){
+		 return lessonPageDao.addOrUpdateLessonPage(lessonPage);
+	 }
 	
 	public boolean deleteLessonPage(int pageId){
 		return lessonPageDao.deleteLessonPage(pageId);
-	}
-	
-	public LessonPage updateLessonPage(LessonPage lessonPage){
-		return lessonPageDao.updateLessonPage(lessonPage);
 	}
 }

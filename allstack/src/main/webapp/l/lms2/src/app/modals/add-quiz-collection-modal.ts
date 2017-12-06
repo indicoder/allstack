@@ -35,6 +35,7 @@ export class AddQuizCollectionModalComponent implements OnInit{
       .then(quizCollection => {
         this.courseSection.quizCollections.push(quizCollection);
         //this.quizCollection = null;
+        this.modalRef.hide();
       });
   }
 }

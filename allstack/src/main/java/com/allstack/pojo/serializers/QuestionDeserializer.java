@@ -42,6 +42,7 @@ public class QuestionDeserializer extends JsonDeserializer<Question>{
 		if(node.hasNonNull("pointsForQuestion")){
 			pointsForQuestion = node.get("pointsForQuestion").intValue();
 		}
+		//TODO: Change isNodeValid to hasNonNull
 		if(SerializerUtil.isNodeValid(node.get("choice1HTML")))
 			choice1HTML = node.get("choice1HTML").asText();
 		if(SerializerUtil.isNodeValid(node.get("choice2HTML")))

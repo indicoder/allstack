@@ -34,7 +34,7 @@ public class LessonPageController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public AppResponse<LessonPage> addLessonPage(@RequestBody LessonPage lessonPage){
 		AppResponse<LessonPage> response = null;
-		lessonPage = lessonPageService.addLessonPage(lessonPage.getCourseSection().getCourseSectionId(), lessonPage.getPageName(), lessonPage.getExtPageId());
+		lessonPage = lessonPageService.addOrUpdateLessonPage(lessonPage);
 		response = new AppResponse<LessonPage>(RetCode.success, lessonPage, "");
 		return response;
 	}
@@ -55,7 +55,7 @@ public class LessonPageController {
 	@ResponseBody
 	public AppResponse<LessonPage> updateLessonPageById(@RequestBody LessonPage lessonPage){
 		AppResponse<LessonPage> response = null;
-		lessonPage = lessonPageService.updateLessonPage(lessonPage);
+		lessonPage = lessonPageService.addOrUpdateLessonPage(lessonPage);
 		if(lessonPage != null){
 			response = new AppResponse<LessonPage>(RetCode.success, lessonPage, "");
 		}else{

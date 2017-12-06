@@ -35,6 +35,7 @@ export class AddCourseSectionModalComponent implements OnInit{
       .then(courseSection => {
         this.course.courseSections.push(courseSection);
         //this.courseSection = null;
+        this.modalRef.hide();
       });
   }
 }

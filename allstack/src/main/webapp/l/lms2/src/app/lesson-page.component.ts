@@ -1,10 +1,13 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit }        from '@angular/core';
+import { Component, OnInit, AfterViewChecked }        from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
 
 import { LessonPage }        from './domain/lesson-page'
 import { LessonPageService } from './lesson-page.service';
+
+declare var PR: any;
+import "../google-code-prettify/prettify.js?skin=sunburst"
 
 @Component({
   selector: 'lesson-page',
@@ -12,7 +15,7 @@ import { LessonPageService } from './lesson-page.service';
   styleUrls: [ './lesson-page.component.css' ]
 })
 
-export class LessonPageComponent implements OnInit {
+export class LessonPageComponent implements OnInit, AfterViewChecked {
   lessonPage: LessonPage;
 
   constructor(
@@ -34,5 +37,9 @@ export class LessonPageComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  ngAfterViewChecked(){
+      PR.prettyPrint();
   }
 }

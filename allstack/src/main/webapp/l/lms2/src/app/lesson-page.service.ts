@@ -21,9 +21,9 @@ export class LessonPageService {
       .catch(this.handleError);
   }
 
-  create(courseSectionId: number, pageName: string, extPageId: string): Promise<LessonPage> {
+  create(lessonPage: LessonPage): Promise<LessonPage> {
     return this.http
-      .post(this.lessonPageAddUrl, JSON.stringify({"courseSection": {courseSectionId: courseSectionId}, pageName: pageName, extPageId: extPageId}), {headers: this.headers})
+      .post(this.lessonPageAddUrl, JSON.stringify(lessonPage), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data as LessonPage)
       .catch(this.handleError);
@@ -44,6 +44,16 @@ export class LessonPageService {
       .toPromise()
       .then(() => lessonPage)
       .catch(this.handleError);
+  }
+
+  validate(lessonPage: LessonPage): boolean {
+    if(!lessonPage.pageName || !lessonPage.contentType) {return;}
+    if(lessonPage.contentType == 0){
+      if(!lessonPage.contentHTML){return;}
+    }
+    if(lessonPage.contentType == 1){
+      if(!lessonPage.quizCollection){return;}
+    }
   }
 
   private handleError(error: any): Promise<any> {

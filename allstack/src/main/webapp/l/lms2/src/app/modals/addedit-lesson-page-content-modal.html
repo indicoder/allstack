@@ -1,0 +1,46 @@
+<!--a type="button" class="btn btn-primary" (click)="openModal(template)">Create template modal</button-->
+<div *ngIf="modalAction == 'add'">
+  <a role="button" class="lesson-page-link" (click)="openModal(template)">+ Add Content</a><br>
+</div>
+<div *ngIf="modalAction == 'edit'">
+  <a role="button" class="lesson-page-link" (click)="openModal(template)">+ Edit Content</a>
+</div>
+
+<template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Content for Lesson Page</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <label>Content Type?</label><br>
+      <div class="btn-group">
+        <label class="btn" [(ngModel)]="contentType" btnRadio="content">Content + Quiz (Optional)</label>
+        <label class="btn" [(ngModel)]="contentType" btnRadio="quiz">Quiz Only</label>
+      </div>
+    </div><br>
+    <div>
+      <label>HTML Content</label><br>
+      <textarea [(ngModel)]="lessonPage.contentHTML" class="form-control" rows="10"  placeholder="Enter contentHTML"></textarea>
+    </div><br>
+    <div>
+      <label>Select Quiz Collection</label><br>
+        <div class="btn-group" dropdown (isChange)="isOpenChange()">
+          <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+            {{selectedQuizCollection.quizCollectionName}} <span class="caret"></span>
+          </button>
+          <ul *dropdownMenu class="dropdown-menu" role="menu">
+            <li role="menuitem" *ngFor="let quizCollection of lessonPage.courseSection.quizCollections"><a class="dropdown-item" (click)="selectQuizCollection(quizCollection);">{{quizCollection.quizCollectionName}}</a></li>
+          </ul>
+        </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button (click)="updateLessonPage();">
+      Add
+    </button>
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+  </div>
+</template>

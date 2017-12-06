@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="back-to-prev"><a href="courses"><&nbsp;&nbsp;Back to Courses</a></div>
   <div *ngIf="lessonPage" class="lesson-page">
+    <div class="back-to-prev"><a href="coursesection/{{lessonPage.courseSection.courseSectionId}}"><&nbsp;&nbsp;Back to Course Section</a></div><br>
     <h4>Edit Lesson Page for <{{lessonPage.courseSection.course.extCourseId}}><{{lessonPage.courseSection.extSectionId}}></h4>
     <div>
       <label>Lesson Page Name (pageName)</label><br>
@@ -14,18 +14,15 @@
     <button (click)="save()" class="btn btn-primary">Save</button>
   </div>
   <div *ngIf="lessonPage" class="lesson-page">
-    <h4>Lesson Page for <{{lessonPage.courseSection.course.extCourseId}}><{{lessonPage.courseSection.extSectionId}}</h4>
-    <!--div class="questions-section-div">
-      <ul>
-        <li class="questions-section" *ngFor="let quizCollection of courseSection.lessonPages">
-          <a class="link-danger" href="">delete</a>
-          <a class="lesson-page-link">{{lessonPage.pageName}}</a>
-          <input type="text" value="1" maxlength="3" size="3">
-        </li>
-        <li class="lesson-page">
-          <a href="lesson-page-link">+ Add Lesson Page</a>
-        </li>
-      </ul>
-    </div-->
+    <h4>Lesson Page for <{{lessonPage.courseSection.course.extCourseId}}><{{lessonPage.courseSection.extSectionId}}></h4>
+    <div class="questions-section-div">
+      <div *ngIf="lessonPage.contentHTML">
+        <addedit-lesson-page-content-modal [lessonPage] = "lessonPage"></addedit-lesson-page-content-modal>
+        <div>
+          <div [innerHtml]="lessonPage.contentHTML"></div>
+        </div><br>
+      </div>
+      <addedit-lesson-page-content-modal [lessonPage] = "lessonPage"></addedit-lesson-page-content-modal>
+    </div>
   </div>
 </div>

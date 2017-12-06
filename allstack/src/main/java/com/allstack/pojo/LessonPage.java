@@ -26,15 +26,20 @@ public class LessonPage {
 	private String pageName;
 	private String extPageId;
 	private CourseSection courseSection;
+	private int contentType;
+	private String contentHTML;
+	private QuizCollection quizCollection;
 	
+	//public LessonPage(int pageId2, String pageName2, String extPageId2, String contentHTML, CourseSection courseSection2){}
 	public LessonPage(){}
 	
-	public LessonPage(int pageId, String pageName, String extPageId, CourseSection courseSection) {
-		super();
+	public LessonPage(int pageId, String pageName, String extPageId, String contentHTML, CourseSection courseSection, QuizCollection quizCollection) {
 		this.pageId = pageId;
 		this.pageName = pageName;
 		this.extPageId = extPageId;
 		this.courseSection = courseSection;
+		this.contentHTML = contentHTML;
+		this.quizCollection = quizCollection;
 	}
 	
 	@Id
@@ -69,5 +74,31 @@ public class LessonPage {
 	}
 	public void setCourseSection(CourseSection courseSection) {
 		this.courseSection = courseSection;
+	}
+	public String getContentHTML() {
+		return contentHTML;
+	}
+
+	public void setContentHTML(String contentHTML) {
+		this.contentHTML = contentHTML;
+	}
+
+	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="quizCollectionId")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="quizCollectionId")
+	public QuizCollection getQuizCollection() {
+		return quizCollection;
+	}
+
+	public void setQuizCollection(QuizCollection quizCollection) {
+		this.quizCollection = quizCollection;
+	}
+
+	public int getContentType() {
+		return contentType;
+	}
+
+	public void setContentType(int contentType) {
+		this.contentType = contentType;
 	}
 }
