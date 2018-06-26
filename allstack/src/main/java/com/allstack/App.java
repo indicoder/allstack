@@ -18,11 +18,13 @@ import com.allstack.dao.CourseSectionDao;
 import com.allstack.dao.LessonPageDao;
 import com.allstack.dao.QuestionDao;
 import com.allstack.dao.QuizCollectionDao;
+import com.allstack.dao.UserDao;
 import com.allstack.services.CourseSectionService;
 import com.allstack.services.CourseService;
 import com.allstack.services.LessonPageService;
 import com.allstack.services.QuestionService;
 import com.allstack.services.QuizCollectionService;
+import com.allstack.services.UserService;
 
 @SpringBootApplication
 public class App 
@@ -58,6 +60,11 @@ public class App
     }
     
     @Bean
+    public UserService userService(){
+    	return new UserService();
+    }
+    
+    @Bean
     public CourseDao courseDao(){
     	return new CourseDao();
     }
@@ -81,13 +88,19 @@ public class App
     public QuestionDao questionDao(){
     	return new QuestionDao();
     }
+    
+    @Bean
+    public UserDao userDao(){
+    	return new UserDao();
+    }
    
     @Bean
     public DataSource dataSource() {
         return DataSourceBuilder
             .create()
             .username("root")
-            .password("123456")
+            //.password("123456")
+            .password("")
             .url("jdbc:mysql://localhost:3306/i80")
             .driverClassName("com.mysql.jdbc.Driver")
             .build();

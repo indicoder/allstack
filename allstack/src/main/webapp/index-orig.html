@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+
+    <title>DecaHack: New-age recruitment agency for software engineering, product management, UxD & digital marketing hires.</title>
+    <meta name="description" content="We are a new-age recruitment agency for a broad range of digital skills. Work with us to supercharge your recruitment process." />
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,600,700" rel="stylesheet">
+    <!--link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500" rel="stylesheet"-->
+    <!-- Custom styles for this template -->
+    <link href="hack.css" rel="stylesheet">
+    <!--script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        // Add smooth scrolling to all links
+        $("a").on('click', function(event) {
+
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 800, function(){
+
+              // Add hash (#) to URL when done scrolling (default click behavior)
+              window.location.hash = hash;
+            });
+          } // End if
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <!--nav class="navbar navbar-expand-lg navbar-light navbar-hack">
+      <a class="navbar-brand" href="#">
+        <img src="assets/logos/decahack-logo.png" width="90%" class="d-inline-block align-top" alt="">
+      </a>
+      <div class="collapse navbar-collapse my-2" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Course Details</a>
+          </li>
+        </ul>
+        <button class="navbar-toggler" type="button" data-toggle="collapse">
+          <span class="navbar-toggler-icon">Contact</span>
+        </button>
+      </div>
+    </nav-->
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow" style="margin-bottom: 0rem!important">
+      <a class="my-0 mr-md-auto">
+        <img src="assets/logos/decahack-logo.png" width="90%" class="d-inline-block align-top" alt="">
+      </a>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="#courseDetails">Course Details</a>
+      </nav>
+
+      <a class="btn btn-nav btn-outline-primary" data-toggle="modal" data-target="#contactModal" href="#">Contact Us</a>
+    </div>
+
+    <main role="main">
+      <div class="jumbotron hero-bg text-center border-bottom" id="mainJumbotron" style="margin-bottom: 0;padding-bottom: 2rem;background-color: #fdfdfd">
+        <div class="container">
+          <h1>Be Expert Programmer</h1>
+          <h2>By coding and doing real projects</h2>
+          <div class="row" style="margin-bottom: 1rem;">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <p>DecaHack is an instructor-led, live, hands-on learning program.
+                It’s like learning programming by doing a real project with a tech company.
+                You will learn to code like pro using all production-quality tools and softwares.<br><br>
+                Let's learn to code the professional way.<br><br>
+                <span class="subtext brand-red">
+                  Next Batch - Deep Programming with Java - 30th Jun (Saturday)
+                </span><br>
+                <span class="subtext brand-light-purple">
+                  Instructor-led Live Online Immersive Course.
+                </span>
+              </p>
+              <a class="btn btn-lg btn-main-CTA btn-brand-blue" href="#courseDetails" role="button">Get Course Details</a><br><br><br>
+              <img class="img-fluid" src="assets/logos/course-logos.png" alt="Java . Spring . Hibernate . MySQL . Angular" width="80%">
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+        </div>
+      </div><!--./mainJumbotron-->
+
+      <div class="jumbotron" id="courseDetails" style="padding-top: 1rem;padding-bottom: 0rem;background-color: #fff">
+        <div class="container" style="margin-top:4rem;">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+              <h4 class="font-bold">Course (Instructor-led Live Online Class)</h4>
+              <h6>We just teach one course and teach it well.</h6>
+              <br>
+
+            </div>
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-5">
+              <h4 class="brand-blue font-semibold">Deep Programming With Java</h4>
+              <span class="h5 font-bold">Java . Spring . Hibernate . SQL . Angular</span><br>
+              <span>With Focus on Data Structure, Algorithm & Problem Solving</span><br><br>
+              <!--img class="img-fluid" src="assets/logos/course-logos.png" alt="Java . Spring . Hibernate . MySQL . Angular"-->
+              <h5 class="brand-red">Next Batch - 30th Jun (Saturday)</h5>
+              <h6 class="brand-blue">Duration - 3 Month</h6>
+              <h6 class="brand-blue">Saturday, Sunday (3 hr each)</h6>
+              <h6 class="brand-blue">Weekday - 1 Hr assignment</h6>
+              <br>
+              <h5 class="brand-red font-bold">Course Fee: Rs 25,000 (2 Installments)</h5><br>
+            </div>
+          </div>
+        </div>
+      </div><!--./mainJumbotron-->
+
+      <div class="container" id="courseFormat" style="background-color: #fdf3e6;padding: 2rem 4rem;margin-top:0rem;">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+            <h4 class="font-bold">Detailed Course Format</h4><br>
+            <h6>Instructor-led Live Online class</h6>
+            <h6>12 Week (3 Month) Program</h6>
+            <h6>3 Hour Saturday + 3 Hour Sunday</h6>
+            <h6>Every day at least 1 hour assignment</h6>
+            <h6>6 Foundation Projects</h6>
+            <h6>2 Major Projects</h6>
+            <h6>Quizzes and Assignments</h6>
+            <h6>1:1 mentoring sessions</h6>
+            <h6>Weekly Presentations</h6>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-5">
+            <h4 class="font-bold brand-blue">Register for Details and Demo</h4>
+            <h6 class="brand-light-purple">Limited Batch Size</h6><br>
+            <form>
+              <div class="form-group">
+                <label for="emailInput">Your Email</label>
+                <input type="email" class="form-control" id="emailInput" placeholder="Your email"><br>
+                <label for="mobileInput">Your Mobile</label>
+                <input type="mobile" class="form-control" id="emailInput" placeholder="Your Mobile"><br>
+                <a class="btn btn-lg btn-main-CTA btn-brand-blue" href="#" role="button">Get Course Details</a><br>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div><!--./courseFormat-->
+
+      <div class="container" id="storyDecaHack" style="margin-top: 3rem;margin-bottom: 3rem;">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <h4>More than <span class="brand-red">200 students </span>have taken our courses to get their desired result</h4>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+
+        <div class="row" style="margin-top: 2rem;">
+          <div class="col-md-1"></div>
+          <div class="col-md-11">
+            <span class="h5 font-bold brand-blue">Goals and Outcome</span><br>
+            <p>
+              At the end of this 3 month course you will have a deep understanding of programming Java.<br>
+              You will do 6 foundation project + 2 major projects. Get ready to write a lot of code.<br>
+              The goal is to make you a confident programmer without getting stuck in languages and frameworks.
+            </p><br>
+            <span class="h5 font-bold brand-blue">Eligibility & Other Notes: </span><br>
+            <p>
+              No previous programming knowledge is expected.<br>
+              You should have at least 6 month work-ex (not necessarily in software) to apply for the course<br>
+              That is because we will deal with a lot of real-life professional scenarios.<br>
+              Our past students worked in support, QA, ERP Systems, project management etc.<br>
+              Freshers can apply to learn real pro-level programming, but we don’t provide placement guarantee.
+            </p>
+          </div>
+        </div>
+
+        <div class="story-row row">
+          <div class="col-md-1"></div>
+          <div class="col-md-9">
+            <h5 class="header">Taught by expert programmer - 12 yrs with Software Giants and startups</h5>
+            <p>
+              Your instructor is an accomplished programmer, who has spent more than 12 years in
+              MNCs like Intuit, Oracle, AOL etc. Have trained more than 200 students in the last 4 years.
+              Passionate to teach programming the right way.
+              He will be your guide, mentor and a friend for the next 3 months.
+            </p>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+
+        <div class="story-row row">
+          <div class="col-md-1"></div>
+          <div class="col-md-9">
+            <h5 class="header">For the people who want to learn real professional coding</h5>
+            <p>
+              Our course is action-packed. We expect you to get your hands dirty writing code as opposed to listening
+              to the lectures. We care about making you a good programmer.
+              Not just teach theories and be done with our responsiblity.
+            </p>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+
+        <div class="story-row row">
+          <div class="col-md-1"></div>
+          <div class="col-md-9">
+            <h5 class="header">We use all real professional tools and processes</h5>
+            <p>
+              You will build real-world applications and collaborate using GitHub, Eclipse, TDD, Bug Tracking, DevOps etc.
+            </p>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+
+        <div class="story-row row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <h5 class="header">BUT - we need your time commitment</h5>
+            <p>
+              As you will be doing a number of projects, you have to get ready to spend time and do
+              hands-on coding. At least 1 hour a day on the weekdays and 4-5 hour on both Saturday and Sunday.
+              Our most successful students commit this time to make themselves successful.
+            </p>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+
+        <div class="story-row row">
+          <div class="col-md-1"></div>
+          <div class="col-md-9">
+            <h5 class="header">Our students moved to Development from QA/Support and many other fields.</h5>
+            <p>
+              Was not doing quality work in support.
+              Did 3 month course with Decahack.
+              Now moved to programming in my company.
+            </p>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+
+        <div class="story-row row">
+          <div class="col-md-1"></div>
+          <div class="col-md-9">
+            <h5 class="header">With us learning doesn't stop even after course ends.</h5>
+            <p>
+              Even after the course completion, we will invite you our periodic hackathons,
+              webinars etc., so that you continue to learn.
+            </p>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+
+        <div class="story-row row">
+          <div class="col-md-1"></div>
+          <div class="col-md-10">
+            <h5 class="header brand-red">Let's start learning programming the way pros do.</h5><br>
+            <a class="btn btn-lg btn-main-CTA btn-brand-blue" href="#courseFormat" role="button">Register Now</a>
+          </div>
+          <div class="col-md-1"></div>
+        </div><br>
+        <div class="text-center">
+
+        </div>
+      </div><!--./storyDecaHack-->
+
+      <div id="Contact" class="jumbotron" style="background-color: #292c2e;margin-bottom:0">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-4">
+            <h4 class="font-white" style="margin-bottom: 1.6rem">Happy to answer your questions.</h4>
+            <img src="assets/logos/decahack-logo.png" class="img-fluid" alt="decahack">
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-6">
+            <h4><a style="color:#89b2ce" href="contact@decaone.com"> contact@decahack.com</a></h4><br>
+            <!--h4 style="color: #89b2ce">+91 988 670 7787</h4-->
+          </div>
+        </div>
+      </div>
+    </div> <!-- /jumbotron-footer -->
+
+    </main>
+
+        <!-- Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <br>
+            <h4 class="brand-blue">99876 65454</h4><br>
+            <h4 class="brand-blue">contact@decahack.com</h4><br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script-->
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <!--script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
